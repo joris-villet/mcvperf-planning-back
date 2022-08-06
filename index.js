@@ -1,13 +1,13 @@
 if (process.env.NODE_ENV !== 'production') {
-
   require('dotenv').config()
-
 }
 
-const path = require('path')
+//const path = require('path')
 const fastify = require('fastify')({
   logger: true
 })
+
+const port = process.env.PORT || 3333;
 
 
 const start = async () => {
@@ -26,7 +26,7 @@ const start = async () => {
     await fastify.register(require('./app/routes/client.js'))
     await fastify.register(require('./app/routes/rdv.js'))
 
-    await fastify.listen({ port: process.env.PORT || 3333 })
+    await fastify.listen({ port: port })
 
   } catch (err) {
     fastify.log.error(err)
