@@ -1,0 +1,27 @@
+{
+  "name": "mcvperf-planning-fastify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "compil": "browserify ./app/public/js/main.js -o ./app/public/js/bundle.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/cors": "^8.1.0",
+    "@fastify/static": "^6.4.0",
+    "@prisma/client": "^4.1.0",
+    "axios": "^0.27.2",
+    "dayjs": "^1.11.3",
+    "fastify": "^4.2.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.1",
+    "nodemon": "^2.0.18",
+    "prisma": "^4.1.0"
+  }
+}
