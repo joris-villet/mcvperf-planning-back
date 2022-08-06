@@ -20,7 +20,8 @@ const start = async () => {
     // })
 
     await fastify.register(require('@fastify/cors'), { 
-      // put your options here
+      origin: 'http://localhost:3000',
+      credentials: true
     })
 
     await fastify.register(require('./app/routes/client.js'))
