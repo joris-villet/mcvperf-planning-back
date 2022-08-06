@@ -26,7 +26,7 @@ const start = async () => {
     await fastify.register(require('./app/routes/client.js'))
     await fastify.register(require('./app/routes/rdv.js'))
 
-    await fastify.listen({ port: 3333 })
+    await fastify.listen({ port: process.env.PORT || 3333 })
 
   } catch (err) {
     fastify.log.error(err)

@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js",
-    "compil": "browserify ./app/public/js/main.js -o ./app/public/js/bundle.js"
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
