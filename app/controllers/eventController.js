@@ -1,5 +1,7 @@
-const { PrismaClient } = require('@prisma/client')
-const prisma = new PrismaClient()
+// const { PrismaClient } = require('@prisma/client')
+// const prisma = new PrismaClient()
+
+const Event = require('../models/Event.js');
 
 module.exports = {
 
@@ -23,18 +25,30 @@ module.exports = {
   },
 
   read: async (request, reply) => {
-    
-    let result = null;
 
-    if (!request.params.id) {
-      result = await prisma.rendezvous.findMany();
-    } else {
-      result = await prisma.rendezvous.findUnique({
-        where: { id: Number(request.params.id) }
-      })
-    }
+    let result = null;
+    const eventId = Number(request.params.id);
+
+    result = !eventId ? await Event.findAll() : await Event.findOne(eventId);
+
+    // if (!request.params.id) {
+    //   result = await Event.findOne(Number(request.params.id));
+    // } else {
+    //   result = await Event.findAll();
+    // }
 
     reply.send(result)
+  },
+
+  findDayEvent: async (_, reply) => {
+    const events = await Event.findDayEvent();
+    return reply.send(events);
+  },
+
+  findWeekEvent: async (request, reply) => {
+    const week = Number(request.params.id);
+    const events = await Event.findWeekEvent(week);
+    return reply.send(events);
   },
 
   update: async (request, reply) => {

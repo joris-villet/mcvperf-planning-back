@@ -1,0 +1,18 @@
+### FINDALL
+GET http://localhost:5000/event/read HTTP/1.1
+
+###
+
+GET http://localhost:5000/event/read/1 HTTP/1.1
+
+###
+
+### findWeekEvent
+GET http://localhost:5000/event/week/32 HTTP/1.1
+
+###
+
+### findDayEvent
+GET http://localhost:5000/event/day HTTP/1.1
+
+###

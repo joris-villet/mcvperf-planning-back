@@ -25,7 +25,7 @@ const start = async () => {
     })
 
     await fastify.register(require('./app/routes/client.js'))
-    await fastify.register(require('./app/routes/rdv.js'))
+    await fastify.register(require('./app/routes/event.js'))
 
     await fastify.listen({ port: port })
 
