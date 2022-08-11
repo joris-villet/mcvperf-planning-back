@@ -16,3 +16,17 @@ GET http://localhost:5000/event/week/32 HTTP/1.1
 GET http://localhost:5000/event/day HTTP/1.1
 
 ###
+
+### CREATE
+POST http://localhost:5000/event/create HTTP/1.1
+content-type: application/json
+
+{
+  "name" : null,
+  "start": "2022-08-11T10:00:00.000Z",
+  "end": "2022-08-11T12:00:00.000Z",
+  "title": "Audi A3",
+  "content": "vidange + pneus",
+  "phone": null
+}
+###

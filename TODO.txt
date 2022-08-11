@@ -1,0 +1,1 @@
+Requête sur la semaine et << l'année >> pour la fonction readWeekEvent();

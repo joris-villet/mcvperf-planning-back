@@ -24,6 +24,8 @@ const start = async () => {
       credentials: true
     })
 
+    fastify.get('/', () => "server OK")
+
     await fastify.register(require('./app/routes/client.js'))
     await fastify.register(require('./app/routes/event.js'))
 

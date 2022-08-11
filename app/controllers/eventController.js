@@ -9,16 +9,14 @@ module.exports = {
 
     console.log(request.body)
 
-    const rdv = await prisma.rendezvous.create({
-      data: {
-        start: request.body.start || "",
-        end: request.body.end || "",
-        title: request.body.title || "",
-        content: request.body.content || "",
-        phone: request.body.phone || "",
-        name: request.body.name || ""
-      }
-    })
+    const rdv = await Event.create({
+      start: request.body.start || "",
+      end: request.body.end || "",
+      title: request.body.title || "",
+      content: request.body.content || "",
+      phone: request.body.phone || "",
+      name: request.body.name || ""
+   });
 
     reply.send(rdv)
    
