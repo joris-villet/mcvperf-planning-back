@@ -1,1 +1,2 @@
-Requête sur la semaine et << l'année >> pour la fonction readWeekEvent();
+Requête sur la semaine et << l'année >> pour la fonction readWeekEvent() 
+  -> OK pour current_week et current_year mais << VOIR FORMATAGE des champs start && end en type ::text >>

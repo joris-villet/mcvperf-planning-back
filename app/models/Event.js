@@ -23,9 +23,13 @@ class Event {
     return result.rows;
   }
 
-  static async findWeekEvent(week) {
-    const result = await db.query(`SELECT id, to_char(\"start\", 'yyyy-mm-dd HH24:MI') AS start, to_char(\"end\", 'yyyy-mm-dd HH24:MI') AS end, title, content, name, phone
-    FROM event WHERE date_part('week', start) = $1;`, [week]);
+  // static async findWeekEvent(week) {
+  //   const result = await db.query(`SELECT id, to_char(\"start\", 'yyyy-mm-dd HH24:MI') AS start, to_char(\"end\", 'yyyy-mm-dd HH24:MI') AS end, title, content, name, phone
+  //   FROM event WHERE date_part('week', start) = $1;`, [week]);
+  //   return result.rows;
+  // }
+  static async findWeekEvent(currentWeek, currentYear) {
+    const result = await db.query("SELECT * FROM get_week_event($1, $2);", [currentWeek, currentYear]);
     return result.rows;
   }
 

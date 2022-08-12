@@ -38,24 +38,29 @@ CREATE OR REPLACE FUNCTION new_event(event json)
 RETURNING *;
 $$ LANGUAGE sql STRICT;
 --------------------------------------
-CREATE OR REPLACE VIEW v_week_event AS
-	SELECT to_char("start", 'yyyy-mm-dd HH24:MI') AS start, to_char("end", 'yyyy-mm-dd HH24:MI') AS end, title, content, name, phone
-	FROM event WHERE date_part('week', start) = 32;
-----------------------------------
-
 -- EVENT de la semaine et année en court
-SELECT to_char("start", 'yyyy-mm-dd HH24:MI') AS start, to_char("end", 'yyyy-mm-dd HH24:MI') AS end, title, content, name, phone
-	FROM event WHERE date_part('week', start) = 32
-	AND date_part('YEAR', start) = 2022;
+SELECT id, name, to_char("start", 'yyyy-mm-dd HH24:MI') AS start, to_char("end", 'yyyy-mm-dd HH24:MI') AS end, title, content, phone
+	FROM event WHERE date_part('week', start) = 32 
+	AND date_part('year', start) = 2022;
 
 --------------------------------------
-CREATE OR REPLACE FUNCTION get_week_event(week int) RETURNS quoi? AS $$
-	SELECT to_char("start", 'yyyy-mm-dd HH24:MI') AS start, to_char("end", 'yyyy-mm-dd HH24:MI') AS end, title, content, name, phone
-	FROM event WHERE date_part('week', start) = week;
+CREATE OR REPLACE FUNCTION get_week_event(current_week int, current_year int) RETURNS SETOF event AS $$
+	SELECT 
+	id, 
+	name, 
+	to_char("start", 'yyyy-mm-dd HH24:MI')::timestamptz AS "start", 
+	to_char("end", 'yyyy-mm-dd HH24:MI')::timestamptz AS "end", 
+	title, 
+	content, 
+	phone 
+	FROM event 
+	WHERE date_part('week', start) = current_week
+	AND date_part('YEAR', start) = current_year
 $$ LANGUAGE sql STRICT;
 ----------------------------------
+DROP FUNCTION get_week_event;
 
-SELECT * FROM get_week_event(32);
+SELECT * FROM get_week_event(32, 2022);
 
 SELECT * FROM event;
 

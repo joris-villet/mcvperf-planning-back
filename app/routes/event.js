@@ -23,7 +23,7 @@ module.exports = (fastify, options, done) => {
 
   fastify.route({
     method: 'GET',
-    url: '/event/week/:id',
+    url: '/event/week/:currentWeek/:currentYear',
     handler: eventController.findWeekEvent
   })
 

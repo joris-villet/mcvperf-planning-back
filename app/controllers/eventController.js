@@ -44,8 +44,9 @@ module.exports = {
   },
 
   findWeekEvent: async (request, reply) => {
-    const week = Number(request.params.id);
-    const events = await Event.findWeekEvent(week);
+    const currentWeek = Number(request.params.currentWeek);
+    const currentYear = Number(request.params.currentYear);
+    const events = await Event.findWeekEvent(currentWeek, currentYear);
     return reply.send(events);
   },
 
